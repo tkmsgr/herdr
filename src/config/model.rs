@@ -998,8 +998,9 @@ pub struct ExperimentalConfig {
     /// mode exits. On macOS this selects the ASCII-capable keyboard layout; on
     /// Windows it switches the IME to English (ASCII) input. Windows support is
     /// currently limited to the Korean IME; with an IME for any other language,
-    /// the input source is left unchanged. macOS and Windows only; a no-op
-    /// elsewhere and a best-effort no-op if the switch fails.
+    /// the input source is left unchanged. On Linux, uses fcitx5-remote to
+    /// deactivate Fcitx 5 temporarily and restore its previous active state.
+    /// A no-op on other platforms or when the input controller is unavailable.
     /// Default: false.
     pub switch_ascii_input_source_in_prefix: bool,
 }

@@ -433,14 +433,14 @@ cjk_ime_agents = ["claude", "pi", "codex"]
 
 ## 前缀输入源切换
 
-在 macOS 和 Windows 上，当前缀命令和由前缀启动的模式处于活动状态时，Herdr 可以临时切换到支持 ASCII 的输入源：
+在 macOS、Windows 和使用 Fcitx 5 的 Linux 上，当前缀命令和由前缀启动的模式处于活动状态时，Herdr 可以临时切换到支持 ASCII 的输入源：
 
 ```toml
 [experimental]
 switch_ascii_input_source_in_prefix = true
 ```
 
-在 macOS 上，会切换到当前支持 ASCII 的键盘布局；在 Windows 上，会将 IME 切换到英文（ASCII）输入。返回终端输入或进入文本字段时，Herdr 会恢复之前的输入源。此设置在其他平台上无效。
+在 macOS 上，会切换到当前支持 ASCII 的键盘布局；在 Windows 上，会将 IME 切换到英文（ASCII）输入。在 Linux 上，前台客户端通过 `fcitx5-remote` 临时停用 Fcitx 5。返回终端输入或进入文本字段时，Herdr 会恢复之前的输入源。原本未激活的 Fcitx 保持不变。Linux 客户端的 PATH 中必须有 `fcitx5-remote`，并且能访问桌面会话总线。控制程序不存在或无响应时，仍可正常输入。此设置在其他平台上无效。
 
 :::caution[Windows 上仅支持韩语 IME]
 目前 Windows 上的支持仅限于韩语 IME。使用其他语言的 IME 时，此设置不会改变输入源。

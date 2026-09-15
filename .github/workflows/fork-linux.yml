@@ -30,6 +30,8 @@ jobs:
         env:
           HERDR_BUILD_COMMIT: ${{ github.event.pull_request.head.sha }}
         run: cargo build --release --locked
+      - name: Exercise prefix input through a real client and server
+        run: python3 scripts/fcitx_prefix_smoke.py target/release/herdr
       - name: Record build identity
         env:
           BUILD_COMMIT: ${{ github.event.pull_request.head.sha }}
