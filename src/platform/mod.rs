@@ -363,6 +363,9 @@ impl PrefixInputSource for RealPrefixInputSource {
     }
 }
 
+#[cfg(all(test, target_os = "linux"))]
+mod linux_prefix_tests;
+
 #[cfg(all(test, unix))]
 mod tests {
     use super::*;
